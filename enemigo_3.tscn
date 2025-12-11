@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cimtg24e3ijmc"]
+
+[ext_resource type="Texture2D" uid="uid://dj3y6y8hxp5w6" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0015.png" id="1_mt6jr"]
+[ext_resource type="Script" uid="uid://drh85f812i0xu" path="res://enemigo_3.gd" id="1_tp64n"]
+[ext_resource type="Texture2D" uid="uid://cjuy3owgqydag" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0016.png" id="2_tp64n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spt1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mt6jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tp64n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp64n"]
+size = Vector2(15, 18)
+
+[node name="Enemigo3" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_tp64n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_spt1y")
+autoplay = "default"
+frame_progress = 0.02188279
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_tp64n")

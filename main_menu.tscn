@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0jcks0mqm72l"]
+
+[ext_resource type="Texture2D" uid="uid://dg7abyp25t7ah" path="res://art/kenney_pixel-platformer/Tilemap/Menú.png" id="1_jix8l"]
+[ext_resource type="Script" uid="uid://cl3ebesctadhl" path="res://main_menu.gd" id="1_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://doboo3ko1eg3j" path="res://art/gui/play.png" id="2_glbon"]
+[ext_resource type="Texture2D" uid="uid://br60jypig8g27" path="res://art/gui/music.png" id="3_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://bke0cpqx2f3r0" path="res://art/gui/music_off.png" id="5_qe12f"]
+[ext_resource type="AudioStream" uid="uid://2gvtrwy7qdl7" path="res://Musica/MusicaMenú.mp3" id="6_nlkkf"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_nlkkf")
+
+[node name="Fondo" type="TextureRect" parent="."]
+offset_right = 1915.0
+offset_bottom = 1074.0
+texture = ExtResource("1_jix8l")
+
+[node name="PlayButton" type="TextureRect" parent="."]
+offset_left = 874.0
+offset_top = 835.0
+offset_right = 1046.0
+offset_bottom = 1009.0
+texture = ExtResource("2_glbon")
+
+[node name="MusicButton" type="TextureRect" parent="."]
+offset_left = 1700.0
+offset_top = 873.0
+offset_right = 1880.0
+offset_bottom = 1063.0
+texture = ExtResource("3_nlkkf")
+
+[node name="MusicButtonOff" type="TextureRect" parent="."]
+visible = false
+offset_left = 1700.0
+offset_top = 873.0
+offset_right = 1880.0
+offset_bottom = 1063.0
+texture = ExtResource("5_qe12f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nlkkf")
+volume_db = -17.026
+autoplay = true
+
+[connection signal="gui_input" from="PlayButton" to="." method="_on_play_button_gui_input"]
+[connection signal="gui_input" from="MusicButton" to="." method="_on_music_boton_gui_input"]
+[connection signal="gui_input" from="MusicButtonOff" to="." method="_on_music_boton_off_gui_input"]

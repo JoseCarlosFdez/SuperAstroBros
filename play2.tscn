@@ -1,0 +1,576 @@
+[gd_scene load_steps=36 format=3 uid="uid://jgwvxf2dgci3"]
+
+[ext_resource type="Script" uid="uid://b6f7pmgn26820" path="res://Play.gd" id="1_8ee72"]
+[ext_resource type="AudioStream" uid="uid://be1ffnqr1arks" path="res://Musica/MusicaJuego.mp3" id="2_ohyob"]
+[ext_resource type="Texture2D" uid="uid://cp7f32ab5lrcn" path="res://art/kenney_pixel-platformer/Tiles/Backgrounds/NormalBackground.png" id="4_lowqe"]
+[ext_resource type="Texture2D" uid="uid://da81heytilpal" path="res://art/kenney_pixel-platformer/Tiles/Suelo/tile_0004.png" id="5_lvvwh"]
+[ext_resource type="Texture2D" uid="uid://qrpdn7ievypf" path="res://art/kenney_pixel-platformer/Tiles/Suelo/tile_0022.png" id="6_r32ok"]
+[ext_resource type="Texture2D" uid="uid://ct8iaxbsdxseu" path="res://art/kenney_pixel-platformer/Tiles/tile_0137.png" id="7_2p3k1"]
+[ext_resource type="Texture2D" uid="uid://bky3x5n83wk5g" path="res://art/kenney_pixel-platformer/Tiles/tile_0136.png" id="8_iksfu"]
+[ext_resource type="Texture2D" uid="uid://jddwcy1sdko5" path="res://art/kenney_pixel-platformer/Tiles/tile_0099.png" id="9_f4x3u"]
+[ext_resource type="Texture2D" uid="uid://xhqiltu0x53r" path="res://art/kenney_pixel-platformer/Tiles/tile_0097.png" id="10_nda2g"]
+[ext_resource type="Texture2D" uid="uid://cvrmsrox5dvfm" path="res://art/kenney_pixel-platformer/Tiles/tile_0059.png" id="11_x4raa"]
+[ext_resource type="Texture2D" uid="uid://d3yiy7fu2o68v" path="res://art/kenney_pixel-platformer/Tiles/tile_0057.png" id="12_tml7x"]
+[ext_resource type="Texture2D" uid="uid://devwqed28wuey" path="res://art/kenney_pixel-platformer/Tiles/tile_0017.png" id="13_31qk7"]
+[ext_resource type="Texture2D" uid="uid://cqupixnjotxcw" path="res://art/kenney_pixel-platformer/Tiles/tile_0019.png" id="14_djx2b"]
+[ext_resource type="Texture2D" uid="uid://dklfs8t6vu37i" path="res://art/kenney_pixel-platformer/Tiles/tile_0018.png" id="15_vxskb"]
+[ext_resource type="Texture2D" uid="uid://cj8arxc74kjar" path="res://art/kenney_pixel-platformer/Tiles/tile_0139.png" id="16_pqe53"]
+[ext_resource type="Texture2D" uid="uid://bnf3s6sbwt344" path="res://art/kenney_pixel-platformer/Tiles/tile_0118.png" id="17_2xw88"]
+[ext_resource type="PackedScene" uid="uid://d3bb2eaohbc13" path="res://player.tscn" id="18_yahyw"]
+[ext_resource type="Texture2D" uid="uid://btludb7udqlct" path="res://art/kenney_pixel-platformer/Tiles/tile_0156.png" id="19_c3c4m"]
+[ext_resource type="Texture2D" uid="uid://bq3vipwpe1fjq" path="res://art/kenney_pixel-platformer/Tiles/tile_0153.png" id="20_c5rhi"]
+[ext_resource type="Texture2D" uid="uid://iknrrrout2ug" path="res://art/kenney_pixel-platformer/Tiles/tile_0154.png" id="21_5t6ql"]
+[ext_resource type="Texture2D" uid="uid://dsgvqljkyyyp4" path="res://art/kenney_pixel-platformer/Tiles/tile_0155.png" id="22_im4ls"]
+[ext_resource type="PackedScene" uid="uid://4t2w7nhn2u1d" path="res://enemigo.tscn" id="23_pkdjx"]
+[ext_resource type="PackedScene" uid="uid://b34wd8irl74ed" path="res://enemigo_2.tscn" id="24_4axcs"]
+[ext_resource type="PackedScene" uid="uid://cimtg24e3ijmc" path="res://enemigo_3.tscn" id="25_mr5sd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1703"]
+size = Vector2(384, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qjt6"]
+size = Vector2(1280, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t12iu"]
+size = Vector2(256, 112)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qmt13"]
+a = Vector2(38, -14)
+b = Vector2(-38, -13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tbrp1"]
+a = Vector2(-36.5, -12)
+b = Vector2(42.5, -12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f0fpu"]
+a = Vector2(-34.25, -19)
+b = Vector2(39.75, -19)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ym336"]
+b = Vector2(-1, 1080)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hfs1a"]
+a = Vector2(-16, -23)
+b = Vector2(-14, 1060)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kkphe"]
+a = Vector2(1012, -7)
+b = Vector2(-907, -6)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b54nu"]
+a = Vector2(129.75, -23.75)
+b = Vector2(-128.25, -27.75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5emer"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Play" type="Node2D"]
+script = ExtResource("1_8ee72")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ohyob")
+volume_db = -30.686
+autoplay = true
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_lowqe")
+
+[node name="Floor" type="CharacterBody2D" parent="."]
+position = Vector2(0, 960)
+collision_layer = 15
+collision_mask = 15
+
+[node name="TextureRect" type="TextureRect" parent="Floor"]
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 120.0
+texture = ExtResource("5_lvvwh")
+
+[node name="TextureRect2" type="TextureRect" parent="Floor"]
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect3" type="TextureRect" parent="Floor"]
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect4" type="TextureRect" parent="Floor"]
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect5" type="TextureRect" parent="Floor"]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect6" type="TextureRect" parent="Floor"]
+offset_left = 1024.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect7" type="TextureRect" parent="Floor"]
+offset_left = 1280.0
+offset_top = 64.0
+offset_right = 1408.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect8" type="TextureRect" parent="Floor"]
+offset_left = 1791.0
+offset_top = 8.0
+offset_right = 1919.0
+offset_bottom = 64.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect9" type="TextureRect" parent="Floor"]
+offset_left = 1664.0
+offset_top = 8.0
+offset_right = 1792.0
+offset_bottom = 64.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect10" type="TextureRect" parent="Floor"]
+offset_left = 1408.0
+offset_top = 64.0
+offset_right = 1536.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect18" type="TextureRect" parent="Floor"]
+offset_left = 1536.0
+offset_top = 64.0
+offset_right = 1664.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect11" type="TextureRect" parent="Floor"]
+offset_left = 1152.0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect12" type="TextureRect" parent="Floor"]
+offset_left = 768.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect13" type="TextureRect" parent="Floor"]
+offset_left = 640.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 120.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect14" type="TextureRect" parent="Floor"]
+offset_left = 255.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 64.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect15" type="TextureRect" parent="Floor"]
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 255.0
+offset_bottom = 64.0
+texture = ExtResource("6_r32ok")
+
+[node name="TextureRect16" type="TextureRect" parent="Floor"]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 120.0
+texture = ExtResource("5_lvvwh")
+
+[node name="TextureRect17" type="TextureRect" parent="Floor"]
+offset_left = 1664.0
+offset_top = 64.0
+offset_right = 1792.0
+offset_bottom = 120.0
+texture = ExtResource("5_lvvwh")
+
+[node name="TextureRect19" type="TextureRect" parent="Floor"]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 256.0
+offset_bottom = 120.0
+texture = ExtResource("5_lvvwh")
+
+[node name="TextureRect20" type="TextureRect" parent="Floor"]
+offset_left = 1792.0
+offset_top = 64.0
+offset_right = 1920.0
+offset_bottom = 120.0
+texture = ExtResource("5_lvvwh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+visible = false
+position = Vector2(192, 64)
+shape = SubResource("RectangleShape2D_i1703")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+visible = false
+position = Vector2(1024, 92)
+shape = SubResource("RectangleShape2D_2qjt6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+visible = false
+position = Vector2(1792, 64)
+shape = SubResource("RectangleShape2D_t12iu")
+
+[node name="Arbol" type="CharacterBody2D" parent="."]
+position = Vector2(-183, 2)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arbol"]
+position = Vector2(1159, 807)
+shape = SubResource("SegmentShape2D_qmt13")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="Arbol"]
+offset_left = 1075.0
+offset_top = 924.0
+offset_right = 1139.0
+offset_bottom = 1024.0
+texture = ExtResource("7_2p3k1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arbol"]
+position = Vector2(1050.5, 760)
+shape = SubResource("SegmentShape2D_tbrp1")
+one_way_collision = true
+
+[node name="TextureRect2" type="TextureRect" parent="Arbol"]
+offset_left = 1075.0
+offset_top = 827.0
+offset_right = 1139.0
+offset_bottom = 927.0
+texture = ExtResource("8_iksfu")
+
+[node name="TextureRect3" type="TextureRect" parent="Arbol"]
+offset_left = 1074.0
+offset_top = 738.0
+offset_right = 1139.0
+offset_bottom = 829.0
+texture = ExtResource("8_iksfu")
+
+[node name="TextureRect4" type="TextureRect" parent="Arbol"]
+offset_left = 1118.0
+offset_top = 785.0
+offset_right = 1182.0
+offset_bottom = 885.0
+texture = ExtResource("9_f4x3u")
+
+[node name="TextureRect5" type="TextureRect" parent="Arbol"]
+offset_left = 1023.0
+offset_top = 737.0
+offset_right = 1087.0
+offset_bottom = 837.0
+texture = ExtResource("9_f4x3u")
+
+[node name="TextureRect6" type="TextureRect" parent="Arbol"]
+offset_left = 1073.0
+offset_top = 638.0
+offset_right = 1140.0
+offset_bottom = 738.0
+texture = ExtResource("10_nda2g")
+
+[node name="TextureRect7" type="TextureRect" parent="Arbol"]
+offset_left = 1140.0
+offset_top = 638.0
+offset_right = 1204.0
+offset_bottom = 738.0
+texture = ExtResource("11_x4raa")
+
+[node name="TextureRect8" type="TextureRect" parent="Arbol"]
+offset_left = 1009.0
+offset_top = 638.0
+offset_right = 1073.0
+offset_bottom = 738.0
+texture = ExtResource("12_tml7x")
+
+[node name="TextureRect9" type="TextureRect" parent="Arbol"]
+offset_left = 1009.0
+offset_top = 538.0
+offset_right = 1077.0
+offset_bottom = 638.0
+texture = ExtResource("13_31qk7")
+
+[node name="TextureRect10" type="TextureRect" parent="Arbol"]
+offset_left = 1140.0
+offset_top = 538.0
+offset_right = 1204.0
+offset_bottom = 638.0
+texture = ExtResource("14_djx2b")
+
+[node name="TextureRect11" type="TextureRect" parent="Arbol"]
+offset_left = 1076.0
+offset_top = 539.0
+offset_right = 1140.0
+offset_bottom = 639.0
+texture = ExtResource("15_vxskb")
+
+[node name="TextureRect12" type="TextureRect" parent="Arbol"]
+offset_left = 1182.0
+offset_top = 786.0
+offset_right = 1231.0
+offset_bottom = 875.0
+texture = ExtResource("16_pqe53")
+
+[node name="TextureRect13" type="TextureRect" parent="Arbol"]
+offset_left = 976.0
+offset_top = 740.0
+offset_right = 1025.0
+offset_bottom = 829.0
+texture = ExtResource("17_2xw88")
+
+[node name="Player" parent="." instance=ExtResource("18_yahyw")]
+position = Vector2(78, 920)
+scale = Vector2(2.035, 2.035)
+collision_layer = 255
+collision_mask = 255
+
+[node name="NubeP" type="CharacterBody2D" parent="."]
+position = Vector2(26, 32)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="Limites" type="Node2D" parent="."]
+
+[node name="Izq" type="StaticBody2D" parent="Limites"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Izq"]
+shape = SubResource("SegmentShape2D_ym336")
+
+[node name="Der" type="StaticBody2D" parent="Limites"]
+position = Vector2(1937, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Der"]
+shape = SubResource("SegmentShape2D_hfs1a")
+
+[node name="Techo" type="StaticBody2D" parent="Limites"]
+position = Vector2(908, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/Techo"]
+shape = SubResource("SegmentShape2D_kkphe")
+
+[node name="Nube" type="CharacterBody2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nube"]
+position = Vector2(1322.25, 643.75)
+shape = SubResource("SegmentShape2D_b54nu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="Nube"]
+offset_left = 1183.0
+offset_top = 608.0
+offset_right = 1281.0
+offset_bottom = 697.0
+texture = ExtResource("20_c5rhi")
+
+[node name="TextureRect2" type="TextureRect" parent="Nube"]
+offset_left = 1280.0
+offset_top = 607.0
+offset_right = 1364.0
+offset_bottom = 708.0
+texture = ExtResource("21_5t6ql")
+
+[node name="TextureRect3" type="TextureRect" parent="Nube"]
+offset_left = 1361.0
+offset_top = 607.0
+offset_right = 1465.0
+offset_bottom = 701.0
+texture = ExtResource("22_im4ls")
+
+[node name="Enemigo" parent="." instance=ExtResource("23_pkdjx")]
+position = Vector2(1832.0001, 258)
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Enemigo2" parent="." instance=ExtResource("24_4axcs")]
+position = Vector2(737, 479.00003)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Enemigo3" parent="." instance=ExtResource("25_mr5sd")]
+position = Vector2(1184, 987)
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ContadorLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1713.0
+offset_top = 21.0
+offset_right = 1890.0
+offset_bottom = 70.0
+text = "Faltan: 20"
+label_settings = SubResource("LabelSettings_5emer")
+
+[node name="NubeP2" type="CharacterBody2D" parent="."]
+position = Vector2(851, 32)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP2"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP2"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP3" type="CharacterBody2D" parent="."]
+position = Vector2(1189, -317)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP3"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP3"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP4" type="CharacterBody2D" parent="."]
+position = Vector2(-204, -115)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP4"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP4"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP5" type="CharacterBody2D" parent="."]
+position = Vector2(389, -311)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP5"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP5"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP6" type="CharacterBody2D" parent="."]
+position = Vector2(-205, -364)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP6"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP6"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP7" type="CharacterBody2D" parent="."]
+position = Vector2(808, -422)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP7"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP7"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="NubeP8" type="CharacterBody2D" parent="."]
+position = Vector2(97, -442)
+collision_layer = 64
+collision_mask = 64
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NubeP8"]
+position = Vector2(539.25, 819)
+shape = SubResource("SegmentShape2D_f0fpu")
+one_way_collision = true
+
+[node name="TextureRect" type="TextureRect" parent="NubeP8"]
+offset_left = 498.0
+offset_top = 799.0
+offset_right = 581.0
+offset_bottom = 879.0
+texture = ExtResource("19_c3c4m")
+
+[node name="Enemigo4" parent="." instance=ExtResource("24_4axcs")]
+position = Vector2(1790, 759)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 4

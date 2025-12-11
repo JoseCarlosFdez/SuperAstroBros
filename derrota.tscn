@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbc3stwcbcrrd"]
+
+[ext_resource type="Script" uid="uid://crrrcfitoigqw" path="res://derrota.gd" id="1_j6myv"]
+[ext_resource type="Texture2D" uid="uid://o7bhoenrf5tm" path="res://art/kenney_pixel-platformer/Tilemap/Derrota.png" id="1_kkwv5"]
+[ext_resource type="Texture2D" uid="uid://doboo3ko1eg3j" path="res://art/gui/play.png" id="2_11exg"]
+[ext_resource type="AudioStream" uid="uid://ef1yqjr1v5at" path="res://Musica/sfx-defeat6.mp3" id="4_k6u1l"]
+
+[node name="Derrota" type="Node2D"]
+script = ExtResource("1_j6myv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_kkwv5")
+expand_mode = 1
+
+[node name="MainMenu" type="TextureRect" parent="."]
+offset_left = 1713.0
+offset_top = 881.0
+offset_right = 1885.0
+offset_bottom = 1055.0
+texture = ExtResource("2_11exg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k6u1l")
+volume_db = -23.273
+autoplay = true
+
+[connection signal="gui_input" from="MainMenu" to="." method="_on_main_menu_gui_input"]

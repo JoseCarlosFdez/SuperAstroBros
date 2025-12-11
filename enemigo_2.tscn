@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b34wd8irl74ed"]
+
+[ext_resource type="Script" uid="uid://n4xya16ob6le" path="res://enemigo_2.gd" id="1_4jxqi"]
+[ext_resource type="Texture2D" uid="uid://c38vrhpuc5y2d" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0025.png" id="2_e4o18"]
+[ext_resource type="Texture2D" uid="uid://ble65ejwtldpn" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0024.png" id="3_4jxqi"]
+[ext_resource type="Texture2D" uid="uid://da0ehfl66kv81" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0026.png" id="4_fyckd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jxqi"]
+size = Vector2(38, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8pqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e4o18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4jxqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e4o18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fyckd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemigo2" type="CharacterBody2D"]
+position = Vector2(-1, 1)
+script = ExtResource("1_4jxqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_4jxqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5833334, 1.4166666)
+sprite_frames = SubResource("SpriteFrames_p8pqi")
+autoplay = "default"
+
+[node name="RandomTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

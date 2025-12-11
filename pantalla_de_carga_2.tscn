@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dft23cpoaw01o"]
+
+[ext_resource type="Script" uid="uid://2wk28nso302g" path="res://intro_nivel_2.gd" id="1_qtlnj"]
+[ext_resource type="Texture2D" uid="uid://b0x448cu0jdpe" path="res://art/kenney_pixel-platformer/Tilemap/NIvel 2.png" id="2_rmw8y"]
+
+[node name="Pantalla de carga2" type="Node2D"]
+script = ExtResource("1_qtlnj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1081.0
+texture = ExtResource("2_rmw8y")
+expand_mode = 1

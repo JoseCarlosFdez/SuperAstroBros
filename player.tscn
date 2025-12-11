@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3bb2eaohbc13"]
+
+[ext_resource type="Texture2D" uid="uid://cjbecs4c5uvol" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0000_D.png" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://cytjx51yqk1uo" path="res://Player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://8o0m3tegwlgf" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0001_D.png" id="3_i3pqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
+radius = 19.0
+height = 42.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8h54")
+}],
+"loop": true,
+"name": &"Astro_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8h54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i3pqv")
+}],
+"loop": true,
+"name": &"Astro_moving",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["jugador"]]
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-21, -18)
+scale = Vector2(1.7083334, 1.625)
+sprite_frames = SubResource("SpriteFrames_hqtel")
+animation = &"Astro_idle"
+autoplay = "Astro_moving"
+centered = false

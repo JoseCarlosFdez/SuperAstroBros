@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpaclhgtw01wt"]
+
+[ext_resource type="Script" uid="uid://d3u4r3rwg5qyc" path="res://moneda.gd" id="1_3fws3"]
+[ext_resource type="Texture2D" uid="uid://ddgfds5kutsxm" path="res://art/kenney_pixel-platformer/Tiles/tile_0151.png" id="1_r4iok"]
+[ext_resource type="Texture2D" uid="uid://c42yh2a73uo34" path="res://art/kenney_pixel-platformer/Tiles/tile_0152.png" id="2_3fws3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iubt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r4iok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3fws3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5w0r"]
+radius = 7.071068
+
+[node name="Moneda" type="Area2D" groups=["monedas"]]
+scale = Vector2(3, 3)
+script = ExtResource("1_3fws3")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iubt5")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_n5w0r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

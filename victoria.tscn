@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://7xkeo1yxn8ao"]
+
+[ext_resource type="Script" uid="uid://4fts146naumc" path="res://victoria.gd" id="1_fty84"]
+[ext_resource type="Texture2D" uid="uid://c3e5hx8mocaox" path="res://art/kenney_pixel-platformer/Tilemap/Victoria.png" id="1_okh8r"]
+[ext_resource type="Texture2D" uid="uid://doboo3ko1eg3j" path="res://art/gui/play.png" id="3_l06h1"]
+[ext_resource type="AudioStream" uid="uid://cqfn4x8l16mn" path="res://Musica/winning-82808.mp3" id="4_l06h1"]
+
+[node name="Victoria" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_fty84")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1080.0
+texture = ExtResource("1_okh8r")
+
+[node name="SiguienteNivel" type="TextureRect" parent="."]
+process_mode = 3
+offset_left = 1713.0
+offset_top = 881.0
+offset_right = 1885.0
+offset_bottom = 1055.0
+texture = ExtResource("3_l06h1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l06h1")
+volume_db = -10.227
+autoplay = true
+
+[connection signal="gui_input" from="SiguienteNivel" to="." method="_on_siguiente_nivel_gui_input"]
